@@ -1,15 +1,16 @@
 const APIkey = '76b0fd098a286373928b97461627195d';
-var city = 'sacramento';
-var state = 'ca';
 var lat;
 var lon;
 
 const weatherMain = document.querySelector('.weather-main');
 const weatherCards = document.querySelectorAll('.card-body');
+const searchBar = document.querySelector('.search-bar');
+const searchInput = document.querySelector('#form1');
+const searchHistory = document.querySelector('.recent-search');
 
 
 
-function getCoords() {
+function getCoords(city) {
     fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${APIkey}`)
         .then( response => response.json())
         .then( response => {
@@ -86,4 +87,25 @@ function getWeatherIcon(response, index) {
       return weatherIcon;
 }
 
-getCoords()
+function formSubmitHandler(event) {
+    event.preventDefault();
+
+    let recentBtn = document.createElement('button');
+    recentBtn.classList.add('btn', 'btn-secondary', 'recent-locations');
+    recentBtn.innerHTML = capitalize(searchInput.value);
+    searchHistory.insertBefore(recentBtn, searchHistory.children[0]);
+
+    let recentLoc = document.querySelectorAll('.recent-locations');
+    if (recentLoc.length > 7) {
+        let removedBtn = recentLoc[recentLoc.length - 1];
+        removedBtn.remove();
+    }
+
+    getCoords(searchInput.value);
+}
+
+function capitalize(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+searchBar.addEventListener("submit", formSubmitHandler);
