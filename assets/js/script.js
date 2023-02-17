@@ -13,7 +13,7 @@ const searchHistory = document.querySelector('.recent-search');
 
 // Uses Openweather's geolocation API to grab coordinates of searched city
 function getCoords(city) {
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${APIkey}`)
+    fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${APIkey}`)
         .then( response => response.json())
         .then( response => {
             lat = response[0].lat;
@@ -25,7 +25,7 @@ function getCoords(city) {
 
 // Uses the grabbed coords to get weather conditions and display them
 function getWeather(lat, lon) {
-    fetch(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${APIkey}`)
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${APIkey}`)
         .then(response => response.json())
         .then(response => {
             console.log(response);
