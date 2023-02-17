@@ -3,6 +3,8 @@
 ## Description
 A weather dashboard that can take user inputted cities and display current forecasted weather conditions (up to 5 days). The webpage utilizes the OpenWeather API to provide weather information for a specified location. The webpage also uses OpenWeathers Geolocation API to accurately grab the user's specified location. This project demonstrates the utility of server-side APIs as well as brushes up on past concepts that were learned throughout the course such as basic HTML/CSS techniques, the use of the Bootstrap CSS framework, as well as several handy javascript practices such as event listeners, DOM manipulation, and the fetch API.
 
+The webpage can be viewed [here](https://brian-lascuna.github.io/weather-dashboard/)
+
 ## Installation
 N/A
 
